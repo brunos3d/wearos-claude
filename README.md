@@ -10,7 +10,7 @@
       <img src="./assets/demo/watch-apk-screenshot.png" alt="wearos-claude dashboard close-up" width="280" />
     </td>
     <td align="center">
-      <video src="./assets/demo/galaxy-watch-footage.mp4" width="280" autoplay loop muted playsinline></video>
+      <img src="./assets/demo/galaxy-watch-footage.gif" alt="wearos-claude running live on a Galaxy Watch 6 Classic" width="280" />
     </td>
   </tr>
   <tr>
