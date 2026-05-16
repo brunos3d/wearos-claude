@@ -1,0 +1,22 @@
+{
+  "name": "wearos-claude",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local-first Wear OS telemetry dashboard for Claude Code",
+  "type": "module",
+  "workspaces": [
+    "backend"
+  ],
+  "scripts": {
+    "dev": "npm --workspace backend run dev",
+    "build": "npm --workspace backend run build",
+    "start": "npm --workspace backend run start",
+    "typecheck": "npm --workspace backend run typecheck"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^25.8.0"
+  }
+}

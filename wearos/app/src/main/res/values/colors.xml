@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Pure-black canvas for AMOLED burn-in safety. -->
+    <color name="bg">#FF000000</color>
+    <!-- Claude Code orange — primary accent. -->
+    <color name="terminal_orange">#FFD77757</color>
+    <color name="terminal_orange_dim">#FF7A3C2B</color>
+    <color name="terminal_red">#FFFF5560</color>
+    <color name="terminal_cyan">#FF55E6FF</color>
+    <color name="terminal_mid">#FF9AA0A6</color>
+    <color name="terminal_faint">#FF3A3F45</color>
+</resources>

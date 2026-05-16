@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">claude.watch</string>
+    <string name="tile_label">claude.watch</string>
+    <string name="tile_description">Retro terminal dashboard for Claude Code usage.</string>
+    <string name="complication_label">Claude usage</string>
+    <string name="loading">…syncing</string>
+    <string name="offline">offline</string>
+    <string name="error">err</string>
+    <string name="tap_to_refresh">tap to refresh</string>
+</resources>

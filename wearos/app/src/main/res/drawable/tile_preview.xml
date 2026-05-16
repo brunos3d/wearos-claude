@@ -1,0 +1,12 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FF000000" />
+        </shape>
+    </item>
+    <item android:gravity="center">
+        <bitmap
+            android:src="@drawable/ic_tile"
+            android:tint="#D77757" />
+    </item>
+</layer-list>

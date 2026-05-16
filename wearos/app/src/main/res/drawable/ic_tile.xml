@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24"
+    android:tint="?attr/colorControlNormal">
+    <!-- Stylised Claude Code mascot silhouette in monochrome. -->
+    <path android:fillColor="#D77757"
+        android:pathData="M5,9 L19,9 L19,13 L5,13 Z" />
+    <path android:fillColor="#D77757"
+        android:pathData="M7,7 L17,7 L17,9 L7,9 Z" />
+    <path android:fillColor="#D77757"
+        android:pathData="M6,13 L18,13 L18,15 L6,15 Z" />
+    <path android:fillColor="#D77757"
+        android:pathData="M8,16 L9,16 L9,17 L8,17 Z M11,16 L12,16 L12,17 L11,17 Z M14,16 L15,16 L15,17 L14,17 Z" />
+</vector>

@@ -1,0 +1,64 @@
+# ---- Secrets / local env ----
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.keystore
+*.jks
+*.p12
+**/secrets/
+**/credentials.json
+
+# ---- Node ----
+node_modules/
+.npm
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---- TypeScript ----
+*.tsbuildinfo
+dist/
+build/
+
+# ---- Android / Gradle ----
+.gradle/
+.kotlin/
+local.properties
+captures/
+.cxx/
+.externalNativeBuild/
+**/build/
+**/release/
+**/*.apk
+**/*.aab
+**/*.aar
+**/output.json
+**/*.iml
+
+# ---- Android signing ----
+keystore.properties
+**/google-services.json
+**/wearosclaude-release-key.*
+
+# ---- IDE ----
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Project artifacts / scratch ----
+backend/cache/
+*.tmp
+/tmp/
+screenshots/
+scratch/
