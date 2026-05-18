@@ -23,7 +23,7 @@ A pixel-art Claude mascot, a Wear OS tile, and a tiny local daemon backend that
 talks straight to Anthropic for the real 5-hour and 7-day usage numbers
 Claude Code itself sees.
 
-[Quick start](#quick-start) · [How it works](#how-it-works) · [Setup](docs/SETUP.md) · [Architecture](docs/ARCHITECTURE.md) · [Debugging](docs/DEBUG.md)
+[Quick start](#quick-start) · [How it works](#how-it-works) · [Background service](#running-as-a-background-service) · [Setup](docs/SETUP.md) · [Architecture](docs/ARCHITECTURE.md) · [Debugging](docs/DEBUG.md)
 
 </div>
 
@@ -257,6 +257,9 @@ All scripts assume you run them from the repo root.
 | Command                             | What it does                                                |
 | ----------------------------------- | ----------------------------------------------------------- |
 | `scripts/dev.sh`                    | install backend deps (if missing) and run `npm run dev`     |
+| `scripts/start.sh`                  | build backend if needed, then run the production server     |
+| `scripts/install-service.sh`        | install + enable the systemd user service (auto-start)      |
+| `scripts/install-service.sh --uninstall` | stop, disable, and remove the systemd service          |
 | `scripts/probe.sh`                  | call `GET /usage` against localhost and pretty-print        |
 | `npm run probe` (inside `backend/`) | dump what `/usage` would return, without booting Fastify    |
 | `scripts/lan-ip.sh`                 | print the host's LAN IP (used by build-apk.sh)              |
@@ -284,6 +287,49 @@ Gradle (from `wearos/`):
 ```
 
 `scripts/build-apk.sh` wraps this. Use it.
+
+---
+
+## Running as a background service
+
+`scripts/install-service.sh` installs a **systemd user service** so the
+backend starts automatically — at login, and at boot if linger is enabled.
+
+```bash
+scripts/install-service.sh        # install + enable
+```
+
+The installer:
+1. Copies `scripts/wearos-claude.service` to `~/.config/systemd/user/`.
+2. Calls `systemctl --user enable --now wearos-claude` to start it immediately
+   and register it to start on future logins.
+3. Calls `loginctl enable-linger $USER` so the service also survives full
+   logouts (starts at boot even with no active session).
+
+Once installed, the normal systemctl commands work:
+
+```bash
+systemctl --user status  wearos-claude   # current state
+systemctl --user stop    wearos-claude   # stop for this session
+systemctl --user start   wearos-claude   # start again
+systemctl --user restart wearos-claude   # restart after a config change
+journalctl --user -u wearos-claude -f    # live logs
+```
+
+**How `scripts/start.sh` works** (called by the service and usable standalone):
+
+1. Sources `~/.nvm/nvm.sh` with `--no-use` so `node` is on `PATH` even in
+   non-interactive shells where your shell profile is not loaded.
+2. Checks whether `backend/dist/backend/src/server.js` is absent or older
+   than any `.ts` source file; if so, runs `npm install` + `tsc`.
+3. `exec`s `node dist/backend/src/server.js` — `backend/.env` is loaded by
+   the server's own config loader, so no extra env setup is needed.
+
+To remove the service entirely:
+
+```bash
+scripts/install-service.sh --uninstall
+```
 
 ---
 

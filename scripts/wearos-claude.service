@@ -1,0 +1,17 @@
+[Unit]
+Description=wearos-claude backend (Claude Code telemetry API)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/github/brunos3d/wearos-claude/backend
+ExecStart=%h/github/brunos3d/wearos-claude/scripts/start.sh
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=wearos-claude
+
+[Install]
+WantedBy=default.target
